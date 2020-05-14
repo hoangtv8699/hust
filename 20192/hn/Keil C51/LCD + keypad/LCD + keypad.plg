@@ -1,0 +1,143 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\hust\20192\hn\Keil C51\LCD + keypad\LCD + keypad.uvproj
+Project File Date:  05/06/2020
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(21): warning C206: 'Init_System': missing function-prototype
+LCD+KEYPAD.C(22): warning C206: 'LCD_init': missing function-prototype
+LCD+KEYPAD.C(23): warning C206: 'LCD_Write_String': missing function-prototype
+LCD+KEYPAD.C(23): error C267: 'LCD_Write_String': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(22): warning C206: 'init_System': missing function-prototype
+LCD+KEYPAD.C(24): warning C206: 'LCD_Write_String': missing function-prototype
+LCD+KEYPAD.C(24): error C267: 'LCD_Write_String': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(24): warning C206: 'LCD_Write_String': missing function-prototype
+LCD+KEYPAD.C(24): error C267: 'LCD_Write_String': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(41): error C202: 'RW': undefined identifier
+LCD+KEYPAD.C(74): error C202: 'LCD_DATA': undefined identifier
+LCD+KEYPAD.C(75): error C202: 'RS': undefined identifier
+LCD+KEYPAD.C(76): error C202: 'RW': undefined identifier
+LCD+KEYPAD.C(77): error C202: 'EN': undefined identifier
+LCD+KEYPAD.C(79): error C202: 'EN': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(85): warning C206: 'Wait_For_LCD': missing function-prototype
+LCD+KEYPAD.C(104): warning C206: 'strlen': missing function-prototype
+LCD+KEYPAD.C(104): error C267: 'strlen': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(85): warning C206: 'Wait_For_LCD': missing function-prototype
+LCD+KEYPAD.C(90): error C231: 'Wait_For_LCD': redefinition
+LCD+KEYPAD.C(93): error C231: 'Wait_For_LCD': redefinition
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(111): warning C206: 'strlen': missing function-prototype
+LCD+KEYPAD.C(111): error C267: 'strlen': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(161): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCD+keypad.c...
+LCD+KEYPAD.C(160): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(160): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(33): warning C206: 'Init_System': missing function-prototype
+LCDKEYPAD.C(42): error C231: 'Init_System': redefinition
+LCDKEYPAD.C(50): error C231: 'Init_System': redefinition
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(118): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(150): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(118): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(92): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(33): warning C206: 'Init_System': missing function-prototype
+LCDKEYPAD.C(42): error C231: 'Init_System': redefinition
+LCDKEYPAD.C(50): error C231: 'Init_System': redefinition
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(118): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created
+Build target 'Target 1'
+compiling LCDkeypad.c...
+LCDKEYPAD.C(118): warning C291: not every exit path returns a value
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+*** ERROR: COMMAND-FILE 'LCD' NOT FOUND
+Target not created

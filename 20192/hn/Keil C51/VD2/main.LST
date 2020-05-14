@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 04/08/2020 16:18:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN main.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE main.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000h                
+0000 7590FF            2         MOV P1, #0ffh            
+0003 758000            3         MOV P0, #00            
+0006                   4     POLL:
+0006 E590              5         MOV A, P1
+0008 B40003            6             CJNE A, #00h, ZONE1                   
+000B 020006            7         LJMP POLL
+                       8             
+000E                   9     ZONE1:
+000E B40107           10             CJNE A, #01h, ZONE2
+0011 74F9             11             MOV A, #0xF9
+0013 F580             12             MOV P0, A
+0015 020033           13             LJMP ALARM
+0018                  14     ZONE2:
+0018 B40207           15             CJNE A, #02h, ZONE3
+001B 74A4             16             MOV A, #0xA4
+001D F580             17             MOV P0, A
+001F 020033           18             LJMP ALARM
+0022                  19     ZONE3:
+0022 B40407           20             CJNE A, #04h, ZONE4
+0025 74B0             21             MOV A, #0xB0
+0027 F580             22             MOV P0, A
+0029 020033           23             LJMP ALARM
+002C                  24     ZONE4:
+002C 7499             25             MOV A, #0x99
+002E F580             26             MOV P0, A
+0030 020033           27             LJMP ALARM              
+                      28             
+                      29                             
+0033                  30     ALARM:
+0033 D287             31         SETB P0.7                
+0035                  32     END_LOOP:
+0035 020035           33         LJMP END_LOOP            
+                      34     END                                                                                        
+                                                                                                                        
+                                                                                                                               
+A51 MACRO ASSEMBLER  MAIN                                                                 04/08/2020 16:18:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ALARM. . . . . . .  C ADDR   0033H   A   
+END_LOOP . . . . .  C ADDR   0035H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+POLL . . . . . . .  C ADDR   0006H   A   
+ZONE1. . . . . . .  C ADDR   000EH   A   
+ZONE2. . . . . . .  C ADDR   0018H   A   
+ZONE3. . . . . . .  C ADDR   0022H   A   
+ZONE4. . . . . . .  C ADDR   002CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,201 @@
+C51 COMPILER V9.01   LCD_KEYPAD                                                            05/06/2020 16:38:11 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LCD_KEYPAD
+OBJECT MODULE PLACED IN LCD+keypad.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD+keypad.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <at89x51.h>
+   2          #include "string.h"
+   3          #define KEYPAD_INTERRUPT 0
+   4          #define LCD_DATA P2
+   5          sbit EN=P0^2;
+   6          sbit RS=P0^0;
+   7          sbit RW=P0^1;
+   8          sbit HA=P1^0;
+   9          sbit HB=P1^1;
+  10          sbit HC=P1^2;
+  11          sbit HD=P1^3;
+  12          sbit CO1=P1^4;
+  13          sbit CO2=P1^5;
+  14          sbit CO3=P1^6;
+  15          sbit CO4=P1^7;
+  16          //Prototypes
+  17          void init_system();
+  18          void delay(int interval);
+  19          void LCD_init();
+  20          unsigned char parse_key();
+  21          void Wait_For_LCD();
+  22          void LCD_Send_Command(unsigned char x);
+  23          void LCD_Write_One_Char(unsigned char c);
+  24          void LCD_Write_String(unsigned char *s);
+  25          //Global vars
+  26          unsigned char num=0;
+  27          //Main prog
+  28          void main()
+  29          {
+  30   1              init_system();
+  31   1              LCD_init();
+  32   1              LCD_Write_String("Xin chao KTMT62");
+  33   1              LCD_Send_Command(0xC0); //Chuyen con tro xuong dong thu 2
+  34   1              while (1) {
+  35   2              }
+  36   1      }
+  37          //system initialization
+  38          void init_system()
+  39          {
+  40   1              IT0=1;          //Edge-triggered int 0
+  41   1              //Keypad interface
+  42   1              P2=0xF0;        //4 bit thap -> chan ra
+  43   1                                      //4 bit cao -> chan vao
+  44   1              IE=0x81;        //Enable EXT0
+  45   1      
+  46   1              //Thiet lap LCD o che do doc
+  47   1              RW = 1;
+  48   1      }
+  49          //Chuong trinh tao do tre
+  50          void delay(int interval)
+  51          {
+  52   1              int i,j;
+  53   1              for(i=0;i<1000;i++)
+  54   1              {
+  55   2                      for(j=0;j<interval;j++);
+C51 COMPILER V9.01   LCD_KEYPAD                                                            05/06/2020 16:38:11 PAGE 2   
+
+  56   2              }
+  57   1      }
+  58          //Chuong trinh tao do tre
+  59          void Delay_ms(int interval)
+  60          {
+  61   1              int i, j;
+  62   1              for (i = 0; i < 1000; i++)
+  63   1              {
+  64   2                      for (j = 0; j < interval; j++);
+  65   2              }
+  66   1      }
+  67          
+  68          void LCD_init()
+  69          {
+  70   1              LCD_Send_Command(0x38); //Chon che do 8 bit, 2 hang cho LCD
+  71   1              LCD_Send_Command(0x0E); //Bat hien thi, nhap nhay con tro       
+  72   1              LCD_Send_Command(0x01); //Xoa man hinh  
+  73   1              LCD_Send_Command(0x80); //Ve dau dong
+  74   1      
+  75   1      }
+  76          
+  77          //Ham thuc hien gui mot lenh xuong LCD
+  78          void LCD_Send_Command(unsigned char x)
+  79          {
+  80   1              LCD_DATA=x;
+  81   1              RS=0; //Chon thanh ghi lenh
+  82   1              RW=0; //De ghi du lieu
+  83   1              EN=1;
+  84   1              Delay_ms(1);
+  85   1              EN=0;           
+  86   1              Wait_For_LCD(); //Doi cho LCD san sang
+  87   1              EN=1;             
+  88   1      }
+  89          //Ham kiem tra va cho den khi LCD san sang
+  90          void Wait_For_LCD()
+  91          {
+  92   1              //Delay_By_Timer_0(80);
+  93   1              Delay_ms(1);
+  94   1      }
+  95          //write 1 char
+  96          void LCD_Write_One_Char(unsigned char c)
+  97          {
+  98   1              LCD_DATA = c; //Dua du lieu vao thanh ghi 
+  99   1              RS = 1; //Chon thanh ghi du lieu
+ 100   1              RW = 0;
+ 101   1              EN = 1;
+ 102   1              Delay_ms(1);
+ 103   1              EN = 0;
+ 104   1              Wait_For_LCD();
+ 105   1              EN = 1;
+ 106   1      }
+ 107          //Ham de LCD hien thi mot xau
+ 108          void LCD_Write_String(unsigned char *s)
+ 109          {
+ 110   1              unsigned char length;
+ 111   1              length=strlen(s); //Lay do dai xau
+ 112   1              while(length!=0)
+ 113   1              {
+ 114   2                      LCD_Write_One_Char(*s); //Ghi ra LCD gia tri duoc tro boi con tro
+ 115   2                      s++; //Tang con tro
+ 116   2                      length--;                        
+ 117   2              }
+C51 COMPILER V9.01   LCD_KEYPAD                                                            05/06/2020 16:38:11 PAGE 3   
+
+ 118   1      }
+ 119          //Keypad scanning
+ 120          unsigned char parse_key()
+ 121          {       
+ 122   1              //row A
+ 123   1              HA=0; HB=HC=HD=1;       
+ 124   1              if(CO1==0){
+ 125   2                      return 7;
+ 126   2              }else if(CO2==0){
+ 127   2                      return 8;
+ 128   2              }else if(CO3==0){
+ 129   2                      return 9;
+ 130   2              }
+ 131   1              //Row B
+ 132   1              HA=HC=HD=1; HB=0;
+ 133   1              if(CO1==0){
+ 134   2                      return 4;
+ 135   2              }else if(CO2==0){
+ 136   2                      return 5;
+ 137   2              }else if(CO3==0){
+ 138   2                      return 6;
+ 139   2              }
+ 140   1      
+ 141   1              //Row C
+ 142   1              HA=HB=HD=1; HC=0;
+ 143   1                      if(CO1==0){
+ 144   2                      return 1;
+ 145   2              }else if(CO2==0){
+ 146   2                      return 2;
+ 147   2              }else if(CO3==0){
+ 148   2                      return 3;
+ 149   2              }
+ 150   1      
+ 151   1              //Row D
+ 152   1              HA=HB=HC=1; HD=0;
+ 153   1              if(CO1==0){
+ 154   2                      return 1;
+ 155   2              }else if(CO2==0){
+ 156   2                      return 0;
+ 157   2              }else if(CO3==0){
+ 158   2                      return 3;
+ 159   2              }
+ 160   1      }
+ 161          //EXT0 for keypressed
+ 162          void process_keypad() interrupt KEYPAD_INTERRUPT
+ 163          {
+ 164   1              unsigned char key;
+ 165   1              EA  = 0;                        //Cam ngat
+ 166   1              key = parse_key();      //Do xem phim nao duoc nhan
+ 167   1              //Tra ve trang thai cu de cho phim moi duoc nhan
+ 168   1              HA = HB = HC = HD = 0;
+ 169   1              LCD_Write_One_Char(key);
+ 170   1              EA = 1;                         //Cho phep ngat tro lai
+ 171   1      }
+*** WARNING C291 IN LINE 160 OF LCD+KEYPAD.C: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    375    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   LCD_KEYPAD                                                            05/06/2020 16:38:11 PAGE 4   
+
+   DATA SIZE        =      1       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

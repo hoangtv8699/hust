@@ -1,0 +1,1 @@
+(window.__LOADABLE_LOADED_CHUNKS__=window.__LOADABLE_LOADED_CHUNKS__||[]).push([[81],{hlmX:function(_,n,t){"use strict";t("2B1R");var A=t("jiZR"),D=t("1dGI");n.a=function(_){return{type:A.SET_ELASTIC_DOCUMENTS,documents:_?_.map(D.c):_}}}}]);

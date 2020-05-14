@@ -1,0 +1,36 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/08/2020  16:28:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE VD3.obj TO VD3
+
+
+INPUT MODULES INCLUDED:
+  VD3.obj (VD3)
+
+
+LINK MAP OF MODULE:  VD3 (VD3)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+
+
+SYMBOL TABLE OF MODULE:  VD3 (VD3)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        VD3
+  -------         ENDMOD        VD3
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0000H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=0
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\hust\20192\hn\Keil C51\VD3\VD3.uvproj
+Project File Date:  04/08/2020
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling VD3.asm...
+VD3.asm(0): warning A41: MISSING 'END' STATEMENT
+linking...
+Program Size: data=8.0 xdata=0 code=0
+"VD3" - 0 Error(s), 1 Warning(s).

@@ -1,0 +1,80 @@
+A51 MACRO ASSEMBLER  INTERRUPT                                                            04/15/2020 15:40:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN interrupt.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE interrupt.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;Common Anode 7SEG-LED numbers
+  0040                 2     NUM_0 EQU 40h ; code to display 0 on 7 segment
+  0079                 3     NUM_1 EQU 79h ; code to display 1 on 7 segment
+  0024                 4     NUM_2 EQU 24h ; code to display 2 on 7 segment
+  0030                 5     NUM_3 EQU 30h ; code to display 3 on 7 segment
+  0019                 6     NUM_4 EQU 19h ; code to display 4 on 7 segment
+  0012                 7     NUM_5 EQU 12h ; code to display 0 on 7 segment
+  0002                 8     NUM_6 EQU 02h ; code to display 1 on 7 segment
+  0078                 9     NUM_7 EQU 78h ; code to display 2 on 7 segment
+  0000                10     NUM_8 EQU 00h ; code to display 3 on 7 segment
+  0010                11     NUM_9 EQU 10h ; code to display 4 on 7 segment
+                      12     ;Interrupt table
+0000                  13     ORG 0000h ; entry address for 8051 RESET
+0000 020100           14             LJMP MAIN ; move MAIN away from interrupt vector table
+0003                  15     ORG 0003h ; vector address for interrupt 0
+0003 02010C           16             LJMP ISR0 ; jump to ISR0
+0013                  17     ORG 0013h ; vector address for interrupt 1
+0013 02010F           18             LJMP ISR1 ; jump to ISR1
+0100                  19             ORG 0100h ; MAIN starts here
+0100                  20     MAIN:
+0100 75A885           21             MOV IE, #10000101B ; enable external interrupts IE0, IE1
+0103 D288             22             SETB IT0 ; negative edge trigger for interrupt 0
+0105 D28A             23             SETB IT1 ; negative edge trigger for interrupt 1
+0107 D290             24             SETB P1.0 ; LED ON
+0109                  25     LOOP:
+0109 020109           26             LJMP LOOP ; end loop
+                      27     ;==================================================================
+                      28     ; ISR0
+                      29     ;==================================================================
+010C                  30     ISR0:
+010C D290             31             SETB P1.0 ; LED ON
+010E 32               32             RETI ; return from interrupt
+                      33     ;==================================================================
+                      34     ; ISR1
+                      35     ;==================================================================
+010F                  36     ISR1:
+010F C290             37             CLR P1.0 ; LED OFF
+0111 32               38             RETI ; return from interrupt
+                      39             END ; end of program
+A51 MACRO ASSEMBLER  INTERRUPT                                                            04/15/2020 15:40:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+IE . . . . . . . .  D ADDR   00A8H   A   
+ISR0 . . . . . . .  C ADDR   010CH   A   
+ISR1 . . . . . . .  C ADDR   010FH   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+LOOP . . . . . . .  C ADDR   0109H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+NUM_0. . . . . . .  N NUMB   0040H   A   
+NUM_1. . . . . . .  N NUMB   0079H   A   
+NUM_2. . . . . . .  N NUMB   0024H   A   
+NUM_3. . . . . . .  N NUMB   0030H   A   
+NUM_4. . . . . . .  N NUMB   0019H   A   
+NUM_5. . . . . . .  N NUMB   0012H   A   
+NUM_6. . . . . . .  N NUMB   0002H   A   
+NUM_7. . . . . . .  N NUMB   0078H   A   
+NUM_8. . . . . . .  N NUMB   0000H   A   
+NUM_9. . . . . . .  N NUMB   0010H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

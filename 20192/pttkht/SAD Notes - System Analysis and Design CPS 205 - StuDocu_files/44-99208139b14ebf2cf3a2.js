@@ -1,0 +1,1 @@
+(window.__LOADABLE_LOADED_CHUNKS__=window.__LOADABLE_LOADED_CHUNKS__||[]).push([[44],{qsz7:function(_,n,t){"use strict";var E=t("jiZR");n.a=function(_,n){return{type:E.REMOVE_FROM_DOCUMENTS_IN_CATEGORY,categoryId:_,documentId:n}}}}]);
